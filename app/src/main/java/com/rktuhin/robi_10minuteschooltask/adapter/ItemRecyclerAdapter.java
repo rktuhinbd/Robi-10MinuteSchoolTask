@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -73,7 +74,7 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
         }
 
         boolean isExpanded = itemModelList.get(position).isExpanded();
-        holder.subItemRecyclerView.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
 
     }
 
@@ -91,6 +92,7 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
+        LinearLayout mainLayout, expandableLayout;
         RecyclerView subItemRecyclerView;
         ImageView iconImageView;
         TextView titleTextView, subTitleTextView;
@@ -98,12 +100,14 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
 
+            mainLayout = itemView.findViewById(R.id.mainLayout);
+            expandableLayout = itemView.findViewById(R.id.expandableLayout);
             iconImageView = itemView.findViewById(R.id.iconImageView);
             titleTextView = itemView.findViewById(R.id.titleTextView);
             subTitleTextView = itemView.findViewById(R.id.subTitleTextView);
-            subItemRecyclerView = itemView.findViewById(R.id.expandableLayout);
+            subItemRecyclerView = itemView.findViewById(R.id.subItemRecyclerView);
 
-            titleTextView.setOnClickListener(new View.OnClickListener() {
+            mainLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 

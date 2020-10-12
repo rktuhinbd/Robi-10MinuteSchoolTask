@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,6 +63,10 @@ public class SubItemRecyclerAdapter extends RecyclerView.Adapter<SubItemRecycler
             holder.subTitleTextView.setText("");
         }
 
+        if (position == itemModelList.size() - 1) {
+            holder.divider.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
@@ -70,17 +76,21 @@ public class SubItemRecyclerAdapter extends RecyclerView.Adapter<SubItemRecycler
 
     class MovieVH extends RecyclerView.ViewHolder {
 
+        LinearLayout mainLayout;
         ImageView iconImageView;
+        View divider;
         TextView titleTextView, subTitleTextView;
 
         public MovieVH(@NonNull final View itemView) {
             super(itemView);
 
+            mainLayout = itemView.findViewById(R.id.mainLayout);
             iconImageView = itemView.findViewById(R.id.iconImageView);
             titleTextView = itemView.findViewById(R.id.titleTextView);
             subTitleTextView = itemView.findViewById(R.id.subTitleTextView);
+            divider = itemView.findViewById(R.id.divider);
 
-            titleTextView.setOnClickListener(new View.OnClickListener() {
+            mainLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(context, "A sub-item clicked", Toast.LENGTH_SHORT).show();

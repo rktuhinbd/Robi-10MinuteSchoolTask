@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         itemModelList = new ArrayList<>();
         itemModelList.add(new ItemModel("Chapter 1", ""));
         itemModelList.add(new ItemModel("Chapter 2", ""));
-        itemModelList.add(new ItemModel("Video 3.0", ""));
-        itemModelList.add(new ItemModel("Document 4.0", "Md. Rejaul Karim"));
+        itemModelList.add(new ItemModel("Chapter 3", ""));
+        itemModelList.add(new ItemModel("Chapter 4", ""));
     }
 
 }
